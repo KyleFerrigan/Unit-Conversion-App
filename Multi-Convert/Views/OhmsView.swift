@@ -28,117 +28,8 @@ struct OhmsView: View {
     @State private var ohmsOut : String = ""
     @State private var wattsOut : String = ""
     
-	// MARK: - Calc Function
-    func calc(){
-		//if either input is blank do not compute
-		if ((usrIn == "") || (usr2In == "")){ return }
-		let usrDbl = (Double(usrIn) ?? 0)
-		let usr2Dbl = (Double(usr2In) ?? 0)
-		
-		//Logic
-		switch usrIndex {
-		case 0://AMPS as input
-			let amps = usrDbl
-			ampsOut = dts(dub: amps)
-			
-			switch usr2Index{
-			case 1: //Calculate Ohms & Watts
-				let volts = usr2Dbl
-				voltsOut = dts(dub: volts)
-				ohmsOut = dts(dub: (volts / amps))
-				wattsOut = dts(dub: (volts * amps))
-			case 2: //Calculate Volts & Watts
-				let ohms = usr2Dbl
-				ohmsOut = dts(dub: ohms)
-				voltsOut = dts(dub: (amps * ohms))
-				wattsOut = dts(dub: (pow(amps,2) * ohms))
-			case 3: //Calculate Volts & Ohms
-				let watts = usr2Dbl
-				wattsOut = dts(dub : watts)
-				voltsOut = dts(dub: (watts / amps))
-				ohmsOut = dts(dub: (watts / pow(amps,2)))
-			default:
-				print("Error in switch usrIndex[0]")
-			}
-			
-		case 1: //VOLTAGE as input
-			let volts = usrDbl
-			voltsOut = dts(dub: volts)
-			
-			switch self.usr2Index{
-			case 0: //Calculate Ohms & Watts
-				let amps = usr2Dbl
-				ampsOut = dts(dub: amps)
-				ohmsOut = dts(dub: (volts / amps))
-				wattsOut = dts(dub: (volts * amps))
-			case 2: //Calculate Amps & Watts
-				let ohms = usr2Dbl
-				ohmsOut = dts(dub: (ohms))
-				ampsOut = dts(dub: (volts/ohms))
-				wattsOut = dts(dub: (pow(volts,2) / ohms))
-			case 3: //Calculate Amps & Ohms
-				let watts = usr2Dbl
-				wattsOut = dts(dub: watts)
-				ampsOut = dts(dub: (watts / volts))
-				ohmsOut = dts(dub: (pow(volts,2) / watts))
-			default:
-				print("Error in switch usrIndex[1]")
-			}
-			
-		case 2: //RESISTANCE as input
-			let ohms = usrDbl
-			ohmsOut = dts(dub: ohms)
-			
-			switch self.usr2Index{
-			case 0: //Calculate Volts & Watts
-				let amps = usr2Dbl
-				ampsOut = dts(dub: amps)
-				voltsOut = dts(dub: (amps * ohms))
-				wattsOut = dts(dub: (pow(amps,2) * ohms))
-			case 1: //Calculate Amps & Watts
-				let volts = usr2Dbl
-				voltsOut = dts(dub: volts)
-				ampsOut = dts(dub: (volts/ohms))
-				wattsOut = dts(dub: (pow(volts,2) / ohms))
-			case 3: //Calculate Amps & Volts
-				let watts = usr2Dbl
-				wattsOut = dts(dub: watts)
-				ampsOut = dts(dub: pow((watts / ohms), 0.5))
-				voltsOut = dts(dub: pow((watts * ohms), 0.5))
-			default:
-				print("Error in switch usrIndex[2]")
-			}
-			
-		case 3: //POWER
-			let watts = usrDbl
-			wattsOut = dts(dub: watts)
-			
-			switch self.usr2Index {
-			case 0: //Calculate Volts & Ohms
-				let amps = usr2Dbl
-				ampsOut = dts(dub: amps)
-				voltsOut = dts(dub: (watts / amps))
-				ohmsOut = dts(dub:(watts / pow(amps,2)))
-			case 1: //Calculate Amps & Ohms
-				let volts = usr2Dbl
-				voltsOut = dts(dub: volts)
-				ampsOut = dts(dub: (watts / volts))
-				ohmsOut = dts(dub: (pow(volts,2) / watts))
-			case 2: //Calculate Amps & Volts
-				let ohms = usr2Dbl
-				ohmsOut = dts(dub: ohms)
-				ampsOut = dts(dub: (pow((watts / ohms), 0.5)))
-				voltsOut = dts(dub: (pow((watts * ohms), 0.5)))
-			default:
-				print("Error in switch usrIndex[3]")
-			}
-		default:
-			print("Error in usrIndexSwitch")
-		}
-    }
-    
     // MARK: - Clear Function
-    func clear(){
+    func clearOhmsLaw(){
         usrIn = ""
         usr2In = ""
         ampsOut = ""
@@ -178,7 +69,12 @@ struct OhmsView: View {
 					
 					Button(
 						action:{
-							calc()
+							var temp : [String]
+							temp = calcOhms(usrIn: self.usrIn, usr2In: self.usr2In, usrIndex: self.usrIndex, usr2Index: self.usr2Index)
+							ampsOut = temp[0]
+							voltsOut = temp[1]
+							ohmsOut = temp[2]
+							wattsOut = temp[3]
 						},
 						label:{
 							Text("Calculate")
@@ -223,7 +119,7 @@ struct OhmsView: View {
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar{
 				ToolbarItemGroup(placement: .navigationBarLeading){
-					Button(action: {self.clear()}) {Text("Clear")}
+					Button(action: {self.clearOhmsLaw()}) {Text("Clear")}
 				}
 				ToolbarItemGroup(placement: .navigationBarTrailing){
 				#if targetEnvironment(macCatalyst)

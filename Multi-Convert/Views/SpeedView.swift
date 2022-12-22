@@ -22,71 +22,6 @@ struct SpeedView: View {
 	// Result
 	@State var result : String = ""
     
-	// MARK: Calc Function
-    func calc(){
-		// Prevent invalid input values
-		let speed = Double(speedIn) ?? -0.998877665544332211
-        if (speed == -0.998877665544332211){ return }
-        
-		// Logic
-		switch inputIndex {
-		case 0: // mph
-			switch outputIndex {
-			case 0: // mph to mph
-				result = dts(dub: speed)
-			case 1: // mph to km/h
-				result = dts(dub: (speed * 1.609344))
-			case 2: // mph to m/s
-				result = dts(dub: (speed * 0.44704))
-			case 3: // mph to knots
-				result = dts(dub: (speed * 0.8689758))
-			default:
-				print("Error in inputIndex case 2")
-			}
-		case 1: // km/h
-			switch outputIndex {
-			case 0: // km/h to mph
-				result = dts(dub: (speed * 0.6213712))
-			case 1: // km/h to km/h
-				result = dts(dub: speed)
-			case 2: // km/h to m/s
-				result = dts(dub: (speed * 0.2777778))
-			case 3: // km/h to knots
-				result = dts(dub: (speed * 0.5399565))
-			default:
-				print("Error in inputIndex case 2")
-			}
-		case 2: // m/s
-			switch outputIndex {
-			case 0: // m/s to mph
-				result = dts(dub: (speed * 2.236936))
-			case 1: // m/s to km/h
-				result = dts(dub: (speed * 3.6))
-			case 2: // m/s to m/s
-				result = dts(dub: (speed))
-			case 3:// m/s to knots
-				result = dts(dub: (speed * 1.943844))
-			default:
-				print("Error in inputIndex case 2")
-			}
-		case 3: // knots
-			switch outputIndex {
-			case 0: // knots to mph
-				result = dts(dub: (speed * 1.15078))
-			case 1: // knots to km/h
-				result = dts(dub: (speed * 1.852001))
-			case 2: // knots to m/s
-				result = dts(dub: (speed * 0.5144447))
-			case 3: // knots to knots
-				result = dts(dub: (speed))
-			default:
-				print("Error in inputIndex case 2")
-			}
-		default:
-			print("Error in inputIndex")
-		}
-    }
-	
     // MARK: - Clear Func
     func clear(){
         speedIn = ""
@@ -115,7 +50,7 @@ struct SpeedView: View {
 					}
 					
 					Button(
-						action:{ calc() },
+						action:{ result = calcSpeed(speedIn: self.speedIn, inputIndex: self.inputIndex, outputIndex: self.outputIndex) },
 						label:{
 							Text("Calculate")
 								.fontWeight(.bold)

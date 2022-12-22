@@ -24,51 +24,6 @@ struct TempView: View {
 	// Result
 	@State var result: String = ""
     
-	// MARK: - Calc Function
-    func calc(){
-		// Prevent invalid input values
-		let temp : Double = Double(tempIn) ?? -459.68
-        if (temp == -459.68){ return }
-		
-		switch inputTIndex{
-		case 0: // Fahrenheit
-			switch outputTIndex{
-			case 0: // F to F
-				result = dts(dub: temp)
-			case 1: // F to C
-				result = dts(dub: ((temp - 32 ) * (5/9)))
-			case 2: //F to K
-				result = dts(dub: (((temp - 32 )*(5/9)) + 273.15))
-			default:
-				print("Error in outputTIndex[0] switch")
-			}
-		case 1: //Celsius
-			switch outputTIndex{
-			case 0: //C to F
-				result = dts(dub: ((temp * 9/5) + 32))
-			case 1: //C to C
-				result = dts(dub: (temp))
-			case 2: //C to K
-				result = dts(dub: (temp + 273.15))
-			default:
-				print("Error in outputTIndex[1] switch")
-			}
-		case 2: //Kelvin
-			switch outputTIndex{
-			case 0: //K to F
-				result = dts(dub: (((temp - 273.15) * 9/5) + 32))
-			case 1://K to C
-				result = dts(dub: (temp - 273.15))
-			case 2: //K to K
-				result = dts(dub: temp)
-			default:
-				print("Error in outputTIndex[2] switch")
-			}
-		default:
-			print("Error in inputTIndex Switch")
-		}
-    }
-	
     // MARK: - Clear Function
     func clear(){
         tempIn = ""
@@ -97,7 +52,7 @@ struct TempView: View {
 					}
 					
 					Button(
-						action:{ calc() },
+						action:{ self.result = calcTemp(tempIn: self.tempIn, inputTIndex: self.inputTIndex, outputTIndex: self.outputTIndex) },
 						label:{
 							Text("Calculate")
 								.fontWeight(.bold)

@@ -16,6 +16,7 @@
 		9C56DC2928DA70F600A16E3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C56DC2828DA70F600A16E3A /* Assets.xcassets */; };
 		9C56DC2B28DA70FB00A16E3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C56DC2A28DA70FB00A16E3A /* ContentView.swift */; };
 		9C5CFC732953DA8A001E37C0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5CFC722953DA8A001E37C0 /* Utilities.swift */; };
+		9CF16A5029551BA70031E8B9 /* Calculators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF16A4F29551BA70031E8B9 /* Calculators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		9C5CFC722953DA8A001E37C0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		9C5CFC742953FA7C001E37C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C5CFC7529540403001E37C0 /* Multi-Convert.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "Multi-Convert.entitlements"; path = "MacOS/Multi-Convert.entitlements"; sourceTree = "<group>"; };
+		9CF16A4F29551BA70031E8B9 /* Calculators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculators.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				9C5CFC722953DA8A001E37C0 /* Utilities.swift */,
+				9CF16A4F29551BA70031E8B9 /* Calculators.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C56DC2328DA6F1100A16E3A /* TempView.swift in Sources */,
+				9CF16A5029551BA70031E8B9 /* Calculators.swift in Sources */,
 				9C56DC1F28DA6EE200A16E3A /* OhmsView.swift in Sources */,
 				9C5CFC732953DA8A001E37C0 /* Utilities.swift in Sources */,
 				9C56DC2B28DA70FB00A16E3A /* ContentView.swift in Sources */,
@@ -235,6 +239,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -289,6 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -309,12 +315,12 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Multi-Convert/Preview Content\"";
 				DEVELOPMENT_TEAM = TJ8R5XP7FZ;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Multi-Convert/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Multi-Convert";
+				INFOPLIST_KEY_CFBundleDisplayName = MultiConvert;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -323,8 +329,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.ferrigan.Multi-Convert";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ferrigan.MultiConvert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
@@ -332,6 +339,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TVOS_DEPLOYMENT_TARGET = 16.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -345,12 +354,12 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Multi-Convert/Preview Content\"";
 				DEVELOPMENT_TEAM = TJ8R5XP7FZ;
+				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Multi-Convert/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Multi-Convert";
+				INFOPLIST_KEY_CFBundleDisplayName = MultiConvert;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -359,8 +368,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "net.ferrigan.Multi-Convert";
+				PRODUCT_BUNDLE_IDENTIFIER = dev.ferrigan.MultiConvert;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
@@ -368,6 +378,8 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TVOS_DEPLOYMENT_TARGET = 16.0;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
