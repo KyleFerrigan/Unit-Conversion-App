@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-// TODO: Move converters here
+
 //Dismiss Keyboard
 extension UIApplication {
 	func endEditing() {
