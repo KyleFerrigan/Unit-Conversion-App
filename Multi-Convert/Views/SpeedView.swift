@@ -147,7 +147,7 @@ struct SpeedView: View {
 				}
 				ToolbarItemGroup(placement: .navigationBarTrailing){
 				#if targetEnvironment(macCatalyst)
-					//Hide
+					//Hide Button
 				#else
 					Button(action: {done()}) {Text("Done")}
 				#endif
