@@ -76,7 +76,7 @@ struct TempView: View {
                 }
             }
 			 // MARK: - NavStack Modifiers
-			.keyboardType(.decimalPad)
+			.keyboardType(.numbersAndPunctuation) //Shows negative sign
 			.navigationTitle(Text("Temperature Converter"))
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar{

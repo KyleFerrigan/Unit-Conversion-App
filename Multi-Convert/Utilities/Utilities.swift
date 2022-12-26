@@ -4,7 +4,7 @@
 //
 //  Created by Kyle Ferrigan on 2022-12-21.
 //
-
+import Foundation
 import SwiftUI
 
 // MARK: Dismiss Keyboard

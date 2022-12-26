@@ -5,7 +5,7 @@
 //  Created by Kyle Ferrigan on 2022-12-22.
 //
 
-import SwiftUI
+import Foundation
 
 // MARK: - Calculate Ohms Law
 func calcOhms(usrIn : String, usr2In : String, usrIndex : Int, usr2Index : Int) -> [String]{
